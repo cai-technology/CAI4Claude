@@ -6,8 +6,11 @@
 
 **Aggregate token usage, costs and task categories across all your machines — in one TUI, one dashboard, one Prometheus endpoint.**
 
+[![CI](https://github.com/cai-technology/CAI4Claude/actions/workflows/ci.yml/badge.svg)](https://github.com/cai-technology/CAI4Claude/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org/)
+[![GitHub release](https://img.shields.io/github/v/release/cai-technology/CAI4Claude?color=blue)](https://github.com/cai-technology/CAI4Claude/releases)
+[![GitHub stars](https://img.shields.io/github/stars/cai-technology/CAI4Claude?style=social)](https://github.com/cai-technology/CAI4Claude/stargazers)
 [![Based on Codeburn](https://img.shields.io/badge/based%20on-codeburn-orange.svg)](https://github.com/AgentSeal/codeburn)
 
 [Installation](#installation) · [Quick Start](#quick-start) · [Multi-host](#multi-host-setup) · [Prometheus + Grafana](#prometheus--grafana-integration) · [Commands](#command-reference)
