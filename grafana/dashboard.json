@@ -1,0 +1,88 @@
+{
+  "annotations": { "list": [] },
+  "description": "CAI4Claude — Multi-host Claude Code token & cost observability | CAI Technology | ai.caitech.ro",
+  "editable": true,
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Total Cost — Today",
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
+      "targets": [{ "expr": "sum(cai4claude_cost_usd_total{period=\"today\",project=\"\"})", "legendFormat": "USD", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "currencyUSD", "decimals": 2, "color": { "mode": "thresholds" }, "thresholds": { "steps": [ { "color": "green", "value": null }, { "color": "yellow", "value": 50 }, { "color": "red", "value": 200 } ] } } }
+    },
+    {
+      "type": "stat",
+      "title": "Total API Calls — Today",
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 },
+      "targets": [{ "expr": "sum(cai4claude_api_calls_total{period=\"today\",project=\"\"})", "legendFormat": "calls", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "short", "decimals": 0 } }
+    },
+    {
+      "type": "stat",
+      "title": "Total Cost — This Month",
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 },
+      "targets": [{ "expr": "sum(cai4claude_cost_usd_total{period=\"month\",project=\"\"})", "legendFormat": "USD", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "currencyUSD", "decimals": 2 } }
+    },
+    {
+      "type": "stat",
+      "title": "Active Hosts",
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 0 },
+      "targets": [{ "expr": "count(count by (host) (cai4claude_cost_usd_total{period=\"today\"} > 0))", "legendFormat": "hosts", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "short", "decimals": 0 } }
+    },
+    {
+      "type": "barchart",
+      "title": "Cost per Host — Today (USD)",
+      "gridPos": { "h": 10, "w": 12, "x": 0, "y": 4 },
+      "targets": [{ "expr": "sum by (host) (cai4claude_cost_usd_total{period=\"today\",project=\"\"})", "legendFormat": "{{host}}", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "currencyUSD", "decimals": 2 } },
+      "options": { "orientation": "horizontal", "showValue": "always" }
+    },
+    {
+      "type": "barchart",
+      "title": "API Calls per Host — Today",
+      "gridPos": { "h": 10, "w": 12, "x": 12, "y": 4 },
+      "targets": [{ "expr": "sum by (host) (cai4claude_api_calls_total{period=\"today\",project=\"\"})", "legendFormat": "{{host}}", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "short", "decimals": 0 } },
+      "options": { "orientation": "horizontal", "showValue": "always" }
+    },
+    {
+      "type": "table",
+      "title": "Top Projects — This Month",
+      "gridPos": { "h": 10, "w": 24, "x": 0, "y": 14 },
+      "targets": [{ "expr": "topk(20, cai4claude_cost_usd_total{period=\"month\",project!=\"\"})", "format": "table", "instant": true, "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "currencyUSD", "decimals": 4 } }
+    },
+    {
+      "type": "timeseries",
+      "title": "Input vs Output Tokens — Today (per host)",
+      "gridPos": { "h": 10, "w": 12, "x": 0, "y": 24 },
+      "targets": [
+        { "expr": "cai4claude_tokens_input_total{period=\"today\"}", "legendFormat": "{{host}} input", "refId": "A" },
+        { "expr": "cai4claude_tokens_output_total{period=\"today\"}", "legendFormat": "{{host}} output", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "short", "decimals": 0 } }
+    },
+    {
+      "type": "timeseries",
+      "title": "Cache Read vs Cache Write — Today (per host)",
+      "gridPos": { "h": 10, "w": 12, "x": 12, "y": 24 },
+      "targets": [
+        { "expr": "cai4claude_tokens_cache_read_total{period=\"today\"}", "legendFormat": "{{host}} cache-read", "refId": "A" },
+        { "expr": "cai4claude_tokens_cache_write_total{period=\"today\"}", "legendFormat": "{{host}} cache-write", "refId": "B" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "short", "decimals": 0 } }
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 38,
+  "tags": ["cai-technology", "claude-code", "cai4claude", "observability"],
+  "templating": { "list": [] },
+  "time": { "from": "now-24h", "to": "now" },
+  "timezone": "browser",
+  "title": "CAI4Claude — Claude Code Multi-host Observability",
+  "uid": "cai4claude-main",
+  "version": 1,
+  "weekStart": ""
+}

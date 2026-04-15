@@ -1,0 +1,61 @@
+{
+  "name": "cai4claude",
+  "version": "1.0.0",
+  "description": "Cost AI 4 Claude — Multi-host observability for Claude Code: aggregate token usage, costs and task categories across all your machines. By CAI Technology.",
+  "type": "module",
+  "main": "./dist/cli.js",
+  "bin": {
+    "cai4claude": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "claude-code",
+    "anthropic",
+    "ai-coding",
+    "token-usage",
+    "cost-tracking",
+    "multi-host",
+    "observability",
+    "cai-technology"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "author": "CAI Technology <tehnic@finesynergy.eu> (https://ai.caitech.ro)",
+  "license": "MIT",
+  "homepage": "https://github.com/cai-technology/CAI4Claude",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cai-technology/CAI4Claude.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cai-technology/CAI4Claude/issues"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "ink": "^7.0.0",
+    "js-yaml": "^4.1.0",
+    "react": "^19.2.5"
+  },
+  "optionalDependencies": {
+    "better-sqlite3": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/react": "^19.2.14",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.1.0"
+  }
+}

@@ -1,0 +1,34 @@
+node_modules/
+dist/
+*.tgz
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Planning artifacts (internal, not shipped)
+docs/superpowers/
+
+# Config / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Debug / logs
+*.log
+npm-debug.log*
+
+# Cache
+.cache/
+*.sqlite
+
+# Build artifacts
+*.tsbuildinfo
