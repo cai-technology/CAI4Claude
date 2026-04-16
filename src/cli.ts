@@ -395,8 +395,6 @@ program
   .option('--period <period>', 'Aggregate period: today, week, month', 'today')
   .action(async (opts: any) => {
     const { writeFileSync } = await import('fs')
-    const { getDateRange: _ } = await import('./cli.js').catch(() => ({ getDateRange: null as any }))
-    // Inline period calc to avoid circular
     const now = new Date()
     const end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999)
     let start: Date

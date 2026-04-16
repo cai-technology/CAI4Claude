@@ -19,14 +19,6 @@ const shortNames: Record<string, string> = {
   'claude-3-5-haiku': 'Haiku 3.5',
 }
 
-function getClaudeDir(): string {
-  return process.env['CLAUDE_CONFIG_DIR'] || join(homedir(), '.claude')
-}
-
-function getProjectsDir(): string {
-  return join(getClaudeDir(), 'projects')
-}
-
 function getDesktopSessionsDir(): string {
   if (process.platform === 'darwin') return join(homedir(), 'Library', 'Application Support', 'Claude', 'local-agent-mode-sessions')
   if (process.platform === 'win32') return join(homedir(), 'AppData', 'Roaming', 'Claude', 'local-agent-mode-sessions')
