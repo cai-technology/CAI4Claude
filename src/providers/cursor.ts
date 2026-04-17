@@ -234,7 +234,7 @@ function createParser(source: SessionSource, seenKeys: Set<string>): SessionPars
 
       try {
         if (!validateSchema(db)) {
-          process.stderr.write('cai4claude: Cursor storage format not recognized. You may need to update Cost AI 4 Claude.\n')
+          process.stderr.write('cai4claude: Cursor storage format not recognized. You may need to update CAI4Claude.\n')
           return
         }
 

@@ -27,7 +27,7 @@ function getCodeburnBin(): string {
 function generatePlugin(bin: string): string {
   const home = homedir()
   return `#!/bin/bash
-# <xbar.title>Cost AI 4 Claude</xbar.title>
+# <xbar.title>CAI4Claude</xbar.title>
 # <xbar.version>v0.1.0</xbar.version>
 # <xbar.author>AgentSeal</xbar.author>
 # <xbar.author.github>agentseal</xbar.author.github>
@@ -76,7 +76,7 @@ export function renderMenubarFormat(
   lines.push(`${formatCost(today.cost)} | sfimage=flame.fill color=#FF8C42`)
   lines.push('---')
 
-  lines.push(`Cost AI 4 Claude | size=15 color=#FF8C42`)
+  lines.push(`CAI4Claude | size=15 color=#FF8C42`)
   lines.push(`AI Coding Cost Tracker | size=11`)
   if (todayProviders && todayProviders.length > 1) {
     for (const p of todayProviders) {
@@ -235,7 +235,7 @@ export async function installMenubar(): Promise<string> {
     lines.push(`  ${appName} detected - plugin should appear in your menu bar shortly.`)
     lines.push(`  If not, open ${appName} and refresh plugins.\n`)
   } else {
-    lines.push(`\n  To see Cost AI 4 Claude in your menu bar, install SwiftBar:`)
+    lines.push(`\n  To see CAI4Claude in your menu bar, install SwiftBar:`)
     lines.push(`    brew install --cask swiftbar`)
     lines.push(`\n  Then launch SwiftBar - the plugin will load automatically.\n`)
   }

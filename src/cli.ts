@@ -59,7 +59,7 @@ function toPeriod(s: string): 'today' | 'week' | '30days' | 'month' {
 
 const program = new Command()
   .name('cai4claude')
-  .description('Cost AI 4 Claude — Multi-host observability for Claude Code. Aggregate token usage, costs and task categories across all your machines. By CAI Technology.')
+  .description('CAI4Claude — Multi-host observability for Claude Code. Aggregate token usage, costs and task categories across all your machines. By CAI Technology.')
   .version(version)
 
 program.hook('preAction', async () => {
