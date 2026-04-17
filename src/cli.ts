@@ -192,7 +192,7 @@ program
       return
     }
 
-    const defaultName = `codeburn-${new Date().toISOString().slice(0, 10)}`
+    const defaultName = `cai4claude-${new Date().toISOString().slice(0, 10)}`
     const outputPath = opts.output ?? `${defaultName}.${opts.format}`
 
     let savedPath: string
@@ -223,7 +223,7 @@ program
 
 program
   .command('currency [code]')
-  .description('Set display currency (e.g. codeburn currency GBP)')
+  .description('Set display currency (e.g. cai4claude currency GBP)')
   .option('--symbol <symbol>', 'Override the currency symbol')
   .option('--reset', 'Reset to USD (removes currency config)')
   .action(async (code?: string, opts?: { symbol?: string; reset?: boolean }) => {

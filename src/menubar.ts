@@ -18,22 +18,22 @@ function getXbarPluginDir(): string {
 
 function getCodeburnBin(): string {
   try {
-    return execSync('which codeburn', { encoding: 'utf-8' }).trim()
+    return execSync('which cai4claude', { encoding: 'utf-8' }).trim()
   } catch {
-    return 'npx --yes codeburn'
+    return 'npx --yes cai4claude'
   }
 }
 
 function generatePlugin(bin: string): string {
   const home = homedir()
   return `#!/bin/bash
-# <xbar.title>CodeBurn</xbar.title>
+# <xbar.title>Cost AI 4 Claude</xbar.title>
 # <xbar.version>v0.1.0</xbar.version>
 # <xbar.author>AgentSeal</xbar.author>
 # <xbar.author.github>agentseal</xbar.author.github>
 # <xbar.desc>See where your AI coding tokens burn. Tracks cost, activity, and model usage across Claude Code, Cursor, and Codex by task type, tool, MCP server, and project.</xbar.desc>
-# <xbar.image>file://${home}/codeburn/assets/logo.png</xbar.image>
-# <xbar.abouturl>https://github.com/agentseal/codeburn</xbar.abouturl>
+# <xbar.image>file://${home}/cai4claude/assets/logo.png</xbar.image>
+# <xbar.abouturl>https://github.com/agentseal/cai4claude</xbar.abouturl>
 # <xbar.dependencies>node</xbar.dependencies>
 
 export PATH="/usr/local/bin:/opt/homebrew/bin:$HOME/.local/bin:$HOME/.npm-global/bin:$PATH"
@@ -76,7 +76,7 @@ export function renderMenubarFormat(
   lines.push(`${formatCost(today.cost)} | sfimage=flame.fill color=#FF8C42`)
   lines.push('---')
 
-  lines.push(`CodeBurn | size=15 color=#FF8C42`)
+  lines.push(`Cost AI 4 Claude | size=15 color=#FF8C42`)
   lines.push(`AI Coding Cost Tracker | size=11`)
   if (todayProviders && todayProviders.length > 1) {
     for (const p of todayProviders) {
@@ -151,15 +151,15 @@ export function renderMenubarFormat(
   lines.push('---')
   const home = process.env.HOME ?? '~'
   const bin = getCodeburnBin()
-  // Invoke the resolved `codeburn` binary directly. SwiftBar/xbar deliver
+  // Invoke the resolved `cai4claude` binary directly. SwiftBar/xbar deliver
   // each `paramN=` value as its own argv entry, so there's no shell
-  // quoting involved — and we don't ship the user to a `~/codeburn`
+  // quoting involved — and we don't ship the user to a `~/cai4claude`
   // checkout that only exists when running from a dev clone (#32).
   lines.push(`Open Full Report | terminal=true shell=${bin} param1=report`)
-  lines.push(`Export CSV to Desktop | terminal=false shell=${bin} param1=export param2=-o param3=${home}/Desktop/codeburn-report.csv`)
+  lines.push(`Export CSV to Desktop | terminal=false shell=${bin} param1=export param2=-o param3=${home}/Desktop/cai4claude-report.csv`)
 
   // Currency submenu -- common currencies as clickable items.
-  // Clicking one runs 'codeburn currency XXX' and refreshes the plugin.
+  // Clicking one runs 'cai4claude currency XXX' and refreshes the plugin.
   const activeCurrency = getCurrency().code
   const currencies = [
     { code: 'USD', name: 'US Dollar' },
@@ -183,8 +183,8 @@ export function renderMenubarFormat(
   lines.push(`Currency: ${activeCurrency} | size=14`)
   for (const { code, name } of currencies) {
     const check = code === activeCurrency ? ' *' : ''
-    // The real CLI subcommand is `codeburn currency [code]` (with `--reset`
-    // for USD), not `codeburn config currency` — the latter doesn't exist
+    // The real CLI subcommand is `cai4claude currency [code]` (with `--reset`
+    // for USD), not `cai4claude config currency` — the latter doesn't exist
     // and silently fails when SwiftBar runs it. Fixes #27.
     if (code === 'USD') {
       lines.push(`--${name} (${code})${check} | terminal=false refresh=true shell=${bin} param1=currency param2=--reset`)
@@ -200,7 +200,7 @@ export function renderMenubarFormat(
 
 export async function installMenubar(): Promise<string> {
   if (platform() !== 'darwin') {
-    return 'Menu bar integration is only available on macOS. Use `codeburn watch` or `codeburn status` instead.'
+    return 'Menu bar integration is only available on macOS. Use `cai4claude watch` or `cai4claude status` instead.'
   }
 
   const bin = getCodeburnBin()
@@ -221,7 +221,7 @@ export async function installMenubar(): Promise<string> {
     await mkdir(pluginDir, { recursive: true })
   }
 
-  const pluginPath = join(pluginDir, `codeburn.${PLUGIN_REFRESH}.sh`)
+  const pluginPath = join(pluginDir, `cai4claude.${PLUGIN_REFRESH}.sh`)
   await writeFile(pluginPath, pluginContent, 'utf-8')
   await chmod(pluginPath, 0o755)
 
@@ -235,7 +235,7 @@ export async function installMenubar(): Promise<string> {
     lines.push(`  ${appName} detected - plugin should appear in your menu bar shortly.`)
     lines.push(`  If not, open ${appName} and refresh plugins.\n`)
   } else {
-    lines.push(`\n  To see CodeBurn in your menu bar, install SwiftBar:`)
+    lines.push(`\n  To see Cost AI 4 Claude in your menu bar, install SwiftBar:`)
     lines.push(`    brew install --cask swiftbar`)
     lines.push(`\n  Then launch SwiftBar - the plugin will load automatically.\n`)
   }
@@ -245,8 +245,8 @@ export async function installMenubar(): Promise<string> {
 
 export async function uninstallMenubar(): Promise<string> {
   const paths = [
-    join(getSwiftBarPluginDir(), `codeburn.${PLUGIN_REFRESH}.sh`),
-    join(getXbarPluginDir(), `codeburn.${PLUGIN_REFRESH}.sh`),
+    join(getSwiftBarPluginDir(), `cai4claude.${PLUGIN_REFRESH}.sh`),
+    join(getXbarPluginDir(), `cai4claude.${PLUGIN_REFRESH}.sh`),
   ]
 
   let removed = false

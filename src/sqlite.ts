@@ -22,7 +22,7 @@ function loadDriver(): boolean {
   } catch {
     loadError = 'SQLite-based providers (Cursor, OpenCode) require the better-sqlite3 package.\n' +
       'Install it with: npm install -g better-sqlite3\n' +
-      'Then run codeburn again.'
+      'Then run cai4claude again.'
     return false
   }
 }

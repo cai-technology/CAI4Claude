@@ -155,7 +155,7 @@ function Overview({ projects, label, width }: { projects: ProjectSummary[]; labe
   return (
     <Box flexDirection="column" borderStyle="round" borderColor={PANEL_COLORS.overview} paddingX={1} width={width}>
       <Text wrap="truncate-end">
-        <Text bold color={ORANGE}>CodeBurn</Text>
+        <Text bold color={ORANGE}>Cost AI 4 Claude</Text>
         <Text dimColor>  {label}</Text>
       </Text>
       <Text wrap="truncate-end">
@@ -483,7 +483,7 @@ function DashboardContent({ projects, period, columns, activeProvider }: { proje
 
   if (projects.length === 0) {
     return (
-      <Panel title="CodeBurn" color={ORANGE} width={dashWidth}>
+      <Panel title="Cost AI 4 Claude" color={ORANGE} width={dashWidth}>
         <Text dimColor>No usage data found for {PERIOD_LABELS[period]}.</Text>
       </Panel>
     )
@@ -617,7 +617,7 @@ function InteractiveDashboard({ initialProjects, initialPeriod, initialProvider,
     return (
       <Box flexDirection="column" width={dashWidth}>
         <PeriodTabs active={period} providerName={activeProvider} showProvider={multipleProviders} />
-        <Panel title="CodeBurn" color={ORANGE} width={dashWidth}>
+        <Panel title="Cost AI 4 Claude" color={ORANGE} width={dashWidth}>
           <Text dimColor>Loading {PERIOD_LABELS[period]}...</Text>
         </Panel>
         <StatusBar width={dashWidth} showProvider={multipleProviders} />

@@ -13,7 +13,7 @@ type ResultCache = {
 const CACHE_FILE = 'cursor-results.json'
 
 function getCacheDir(): string {
-  return join(homedir(), '.cache', 'codeburn')
+  return join(homedir(), '.cache', 'cai4claude')
 }
 
 function getCachePath(): string {

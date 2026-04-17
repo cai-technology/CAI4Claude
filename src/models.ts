@@ -47,7 +47,7 @@ const FALLBACK_PRICING: Record<string, ModelCosts> = {
 let pricingCache: Map<string, ModelCosts> | null = null
 
 function getCacheDir(): string {
-  return join(homedir(), '.cache', 'codeburn')
+  return join(homedir(), '.cache', 'cai4claude')
 }
 
 function getCachePath(): string {

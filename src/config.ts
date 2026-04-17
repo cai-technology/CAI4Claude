@@ -10,7 +10,7 @@ export type CodeburnConfig = {
 }
 
 function getConfigDir(): string {
-  return join(homedir(), '.config', 'codeburn')
+  return join(homedir(), '.config', 'cai4claude')
 }
 
 function getConfigPath(): string {

@@ -44,7 +44,7 @@ function getFractionDigits(code: string): number {
 }
 
 function getCacheDir(): string {
-  return join(homedir(), '.cache', 'codeburn')
+  return join(homedir(), '.cache', 'cai4claude')
 }
 
 function getRateCachePath(): string {
